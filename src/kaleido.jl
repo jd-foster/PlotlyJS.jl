@@ -13,6 +13,8 @@ const P = Pipes()
 const ALL_FORMATS = ["png", "jpeg", "webp", "svg", "pdf", "eps", "json"]
 const TEXT_FORMATS = ["svg", "json", "eps"]
 
+const _mathjax_url = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"
+
 function _restart_kaleido_process()
     if isdefined(P, :proc) && process_running(P.proc)
         kill(P.proc)
@@ -33,7 +35,7 @@ function _start_kaleido_process()
                 joinpath(art, "kaleido.cmd")
             end
             no_sandbox = "--no-sandbox"
-            Sys.isapple() ? `$(cmd) plotly --disable-gpu --single-process` : `$(cmd) plotly --disable-gpu $(no_sandbox)`
+            Sys.isapple() ? `$(cmd) plotly --disable-gpu --single-process --mathjax=$(_mathjax_url)` : `$(cmd) plotly --disable-gpu $(no_sandbox) --mathjax=$(_mathjax_url)`
         end
         kstdin = Pipe()
         kstdout = Pipe()
