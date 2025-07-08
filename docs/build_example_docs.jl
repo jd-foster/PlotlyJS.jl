@@ -7,7 +7,7 @@ a short html div below with the interactive output.
 using PlotlyJS
 
 # used in examples
-using Distributions, HTTP, DataFrames, RDatasets, Colors, CSV, JSON
+using Distributions, DataFrames, RDatasets, Colors, CSV, JSON
 using Random, Dates, LinearAlgebra, DelimitedFiles
 
 
